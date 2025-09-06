@@ -1,0 +1,35 @@
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
+
+def get_num_words(text):
+    words = text.split()
+    return len(words)
+
+def get_chars_dict(text):
+    chars = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+    return chars
+
+def sort_on(item):
+    return item["num"]
+
+def analyze_book(chars_dict):
+    results = []
+    for key, value in chars_dict.items():
+        results.append({"char": key, "num": value})
+    results.sort(reverse=True, key=sort_on)
+    return results
+    
+
+
+
+
+
+
+
